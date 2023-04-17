@@ -1,0 +1,10 @@
+**/.idea/
+**/.gradle/
+**/target/
+*.iml
+.DS_Store
+**/generated/
+**/rebel.xml
+**/rebel-remote.xml
+out
+classes
