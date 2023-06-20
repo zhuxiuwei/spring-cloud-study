@@ -1,0 +1,10 @@
+server:
+  port: 10086 # 服务端口
+# 以下的服务名称，和地址，都是为了做服务的注册
+spring:
+  application:
+    name: eurekaserver  # 服务名称
+eureka:
+  client:
+    service-url:  # eureka的地址信息
+      defaultZone: http://127.0.0.1:10086/eureka  # 如果是eureka集群，这里可以是多个地址，用逗号隔开
