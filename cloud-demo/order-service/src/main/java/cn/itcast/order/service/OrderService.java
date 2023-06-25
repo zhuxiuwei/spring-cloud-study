@@ -18,11 +18,17 @@ public class OrderService {
     public Order queryOrderById(Long orderId) {
         // 1.查询订单
         Order order = orderMapper.findById(orderId);
-        // 2. 利用rest template发起http请求，查询用户
-        String url = "http://localhost:8081/user/" + order.getUserId();
-        User user = restTemplate.getForObject(url, User.class);
-        // 3. 封装user到order
-        order.setUser(user);
+        try {
+            // 2. 利用rest template发起http请求，查询用户
+            String url = "http://localhost:8081/user/" + order.getUserId();
+            User user = restTemplate.getForObject(url, User.class);
+            // 3. 封装user到order
+            order.setUser(user);
+        }catch (Exception e){
+            System.out.println("远程调用user service失败：");
+            //捕获远程调用异常
+            e.printStackTrace();
+        }
         // 4.返回
         return order;
     }
