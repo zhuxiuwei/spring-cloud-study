@@ -20,7 +20,7 @@ public class OrderService {
         Order order = orderMapper.findById(orderId);
         try {
             // 2. 利用rest template发起http请求，查询用户
-            String url = "http://localhost:8081/user/" + order.getUserId();
+            String url = "http://USERSERVICE/user/" + order.getUserId();
             User user = restTemplate.getForObject(url, User.class);
             // 3. 封装user到order
             order.setUser(user);
