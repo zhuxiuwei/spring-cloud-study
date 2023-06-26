@@ -26,9 +26,14 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
         <!--eureka client依赖。来注册服务到eureka-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
+<!--        </dependency>-->
+        <!-- nacos客户端依赖。使用它就需要注释掉上面的eureka client依赖 -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
     </dependencies>
     <build>

@@ -20,7 +20,8 @@ public class OrderService {
         Order order = orderMapper.findById(orderId);
         try {
             // 2. 利用rest template发起http请求，查询用户
-            String url = "http://USERSERVICE/user/" + order.getUserId();
+            // 注意！！！ 使用nacos服务发现，userservice必须小写。使用eureka做服务发现时，大小写没关系。
+            String url = "http://userservice/user/" + order.getUserId();
             User user = restTemplate.getForObject(url, User.class);
             // 3. 封装user到order
             order.setUser(user);

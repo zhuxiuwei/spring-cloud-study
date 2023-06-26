@@ -8,6 +8,9 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
   application:
     name: orderservice  # 服务名称
+  cloud:
+    nacos: # nacos服务发现。用它就需要注释掉下面的eureka。
+      server-addr: localhost:8848   #nacos服务地址。貌似默认就是这个不配也行。
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
   configuration:
@@ -17,7 +20,7 @@ logging:
     cn.itcast: debug
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
-eureka:
-  client:
-    service-url:  # eureka的地址信息
-      defaultZone: http://127.0.0.1:10086/eureka
+#eureka:
+#  client:
+#    service-url:  # eureka的地址信息
+#      defaultZone: http://127.0.0.1:10086/eureka
