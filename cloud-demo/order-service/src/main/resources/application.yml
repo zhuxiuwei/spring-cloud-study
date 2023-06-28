@@ -11,6 +11,8 @@ spring:
   cloud:
     nacos: # nacos服务发现。用它就需要注释掉下面的eureka。
       server-addr: localhost:8848   #nacos服务地址。貌似默认就是这个不配也行。
+#      discovery:
+#        namespace: 77c261e4-1109-47c8-8209-b3bebceaafa6 #namespace的ID!!!。注意如果这么配置的话，order服务就和user服务不在一个命名空间了，order服务会无法调用user了。所以注释掉。
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
   configuration:
