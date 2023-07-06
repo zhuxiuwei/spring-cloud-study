@@ -9,4 +9,8 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "pattern")
 public class PatternProperties {
     private String dateformat;
+    private String envSharedValue;  //p28 多环境配置共享
+    private String name1, name2;  //p28 多环境配置共享
+
+
 }

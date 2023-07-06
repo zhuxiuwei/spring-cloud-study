@@ -22,11 +22,17 @@ import java.time.format.DateTimeFormatter;
 @RestController
 @RequestMapping("/user_TestConfigHotRefreshUsingConfigurationProperties")
 public class UserController_TestConfigHotRefreshUsingConfigurationProperties {
-    //p27 通过"onfigurationProperties"实现热更新
+    //p27 通过"ConfigurationProperties"实现热更新
     @Autowired
     PatternProperties patternProperties;
     @GetMapping("/now")
     public String now() {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern(patternProperties.getDateformat()));
+    }
+
+    //p28 多环境配置共享。显示当前PatternProperties配置的属性列表。
+    @GetMapping("/prop")
+    public PatternProperties showPatternProperties(){
+        return patternProperties;
     }
 }
