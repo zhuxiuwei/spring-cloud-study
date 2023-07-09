@@ -22,6 +22,7 @@ logging:
     cn.itcast: debug
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
+#用nacos做服务注册，所以注释掉下面的eureka
 #eureka:
 #  client:
 #    service-url:  # eureka的地址信息

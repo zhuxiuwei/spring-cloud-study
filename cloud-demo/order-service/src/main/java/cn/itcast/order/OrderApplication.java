@@ -4,11 +4,13 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @MapperScan("cn.itcast.order.mapper")
 @SpringBootApplication
+@EnableFeignClients
 public class OrderApplication {
 
     public static void main(String[] args) {
@@ -21,6 +23,12 @@ public class OrderApplication {
      * @return
      */
     @Bean
+    /**
+     * p12 服务发现（拉取）
+     * 注入RestTemplate客户端实现类。
+     * 加@LoadBalanced这个注解，让RestTemplate调用客户端时负载均衡。
+     * 不加的话，调用userservice失败，报错：org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://userservice/user/1": userservice; nested exception is java.net.UnknownHostException: userservice
+     */
     @LoadBalanced
     public RestTemplate restTemplate(){
         return new RestTemplate();
