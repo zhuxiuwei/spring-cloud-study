@@ -10,7 +10,8 @@ import org.springframework.web.client.RestTemplate;
 
 @MapperScan("cn.itcast.order.mapper")
 @SpringBootApplication
-@EnableFeignClients
+@EnableFeignClients(
+        basePackages = "com.xiuwei.feign")  //p34: basePackages注解解决OrderApplication找不到feign-api里定义的 'com.xiuwei.feign.httpclients.UserClient'问题
 public class OrderApplication {
 
     public static void main(String[] args) {

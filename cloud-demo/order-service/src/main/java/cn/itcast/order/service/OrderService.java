@@ -1,9 +1,9 @@
 package cn.itcast.order.service;
 
-import cn.itcast.order.httpclients.UserClient;
 import cn.itcast.order.mapper.OrderMapper;
-import cn.itcast.order.pojo.Order;
-import cn.itcast.order.pojo.User;
+import com.xiuwei.feign.httpclients.UserClient;
+import com.xiuwei.feign.pojo.Order;
+import com.xiuwei.feign.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -45,13 +45,13 @@ public class OrderService {
         Order order = orderMapper.findById(orderId);
         try {
             // 2. 利用feign发起http请求，查询用户.
-            // 变成风格比RestTemplate好很多。和本地调用语法一致，看不出来是远程调用。
+            // 编程风格比RestTemplate好很多。和本地调用语法一致，看不出来是远程调用。
             User user = userClient.findBuId(order.getUserId());
             // 3. 封装user到order
             order.setUser(user);
         }catch (Exception e){
             System.out.println("远程调用user service失败：");
-            //捕获远程调用异常
+            //捕获远程调用异常git
             e.printStackTrace();
         }
         // 4.返回
