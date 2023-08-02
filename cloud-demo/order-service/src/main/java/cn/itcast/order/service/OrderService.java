@@ -51,7 +51,7 @@ public class OrderService {
             order.setUser(user);
         }catch (Exception e){
             System.out.println("远程调用user service失败：");
-            //捕获远程调用异常git
+            //捕获远程调用异常
             e.printStackTrace();
         }
         // 4.返回

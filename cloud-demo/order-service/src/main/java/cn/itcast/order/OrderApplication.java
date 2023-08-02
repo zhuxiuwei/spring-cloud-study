@@ -6,12 +6,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 @MapperScan("cn.itcast.order.mapper")
 @SpringBootApplication
-@EnableFeignClients(
-        basePackages = "com.xiuwei.feign")  //p34: basePackages注解解决OrderApplication找不到feign-api里定义的 'com.xiuwei.feign.httpclients.UserClient'问题
+@EnableFeignClients(basePackages = "com.xiuwei.feign")  //p34: basePackages注解解决OrderApplication找不到feign-api里定义的 'com.xiuwei.feign.httpclients.UserClient'问题
+//TODO: 230801 下面的scanBasePackages一直不work，有时间再看吧。
+//@SpringBootApplication(scanBasePackages = {"cn.itcast.order", "com.xiuwei.feign.httpclients"})
+//@EnableFeignClients
 public class OrderApplication {
 
     public static void main(String[] args) {
