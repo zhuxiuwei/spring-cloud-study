@@ -33,6 +33,14 @@ public class UserController_TestConfigHotRefreshUsingConfigurationProperties {
     //p28 多环境配置共享。显示当前PatternProperties配置的属性列表。
     @GetMapping("/prop")
     public PatternProperties showPatternProperties(){
+        /**
+         * 效果：{"dateformat":"yyyy年MM月dd HH:mm:ss","envSharedValue":"多环境共享的配置值","name1":"本地环境1","name2":"本地环境2"}
+         * 其中：
+         * 1、dateformat来自nacos在线配置：userservice-dev.yaml
+         * 2、envSharedValue来自nacos在线配置（多环境共享配置）：userservice
+         * 3、name1来自本地配置文件：application.yml
+         * 4、name2来自本地配置文件：bootstrap.yml
+         */
         return patternProperties;
     }
 }
