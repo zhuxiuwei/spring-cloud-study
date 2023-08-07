@@ -35,7 +35,9 @@ public class UserController {
      * @return 用户
      */
     @GetMapping("/{id}")
-    public User queryById(@PathVariable("id") Long id) {
+    public User queryById(@PathVariable("id") Long id,
+                          @RequestHeader(value = "newHeaderKey", required = false) String newHeaderKey) {   //p38 路由过滤器工长测试
+        System.out.println("newHeaderKey：" + newHeaderKey);   //p38 路由过滤器工长测试。效果：打印【newHeaderKey：newHeaderValue --- user-service only!!!】
         return userService.queryById(id);
     }
 }
